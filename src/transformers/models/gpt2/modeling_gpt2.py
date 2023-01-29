@@ -977,7 +977,7 @@ class GPT2LMHeadModel(GPT2PreTrainedModel):
 
     def get_output_embeddings(self):
         return deepcopy(self.lm_head)
-    def resize_out_embeddings(self, len_emb)
+    def resize_out_embeddings(self, len_emb):
         new_Linear = nn.Linear(self.lm_head.weight.shape[1], len_emb, bias=False)
         with torch.no_grad():
             new_Linear.weight[:self.lm_head.weight.shape[0]] = self.lm_head.weight[:len_emb]
