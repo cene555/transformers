@@ -45,7 +45,7 @@ from ...utils import (
 )
 from ...utils.model_parallel_utils import assert_device_map, get_device_map
 from .configuration_gpt2 import GPT2Config
-
+from copy import deepcopy
 
 logger = logging.get_logger(__name__)
 
@@ -976,7 +976,12 @@ class GPT2LMHeadModel(GPT2PreTrainedModel):
         torch.cuda.empty_cache()
 
     def get_output_embeddings(self):
-        return self.lm_head
+        return deepcopy(self.lm_head)
+    def resize_out_embeddings(self, len_emb)
+        new_Linear = nn.Linear(self.lm_head.weight.shape[1], len_emb, bias=False)
+        with torch.no_grad():
+            new_Linear.weight[:self.lm_head.weight.shape[0]] = self.lm_head.weight[:len_emb]
+        self.lm_head = new_Linear
 
     def set_output_embeddings(self, new_embeddings):
         self.lm_head = new_embeddings
