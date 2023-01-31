@@ -97,7 +97,6 @@ if stale_egg_info.exists():
 # 2. once modified, run: `make deps_table_update` to update src/transformers/dependency_versions_table.py
 _deps = [
     "Pillow",
-    "accelerate>=0.10.0",
     "black==22.3",  # after updating to black 2023, also update Python version in pyproject.toml to 3.7
     "codecarbon==1.2.0",
     "cookiecutter==1.7.3",
@@ -112,12 +111,10 @@ _deps = [
     "fastapi",
     "filelock",
     "flake8>=3.8.3",
-    "flax>=0.4.1",
     "ftfy",
     "fugashi>=1.0",
     "GitPython<3.1.19",
     "hf-doc-builder>=0.3.0",
-    "huggingface-hub>=0.11.0,<1.0",
     "importlib_metadata",
     "ipadic>=1.0.0,<2.0",
     "isort>=5.5.4",
@@ -166,7 +163,6 @@ _deps = [
     "timeout-decorator",
     "timm",
     "tokenizers>=0.11.1,!=0.11.3,<0.14",
-    "torch>=1.7,!=1.12.0",
     "torchaudio",
     "pyctcdecode>=0.4.0",
     "tqdm>=4.27",
